@@ -1,6 +1,6 @@
 services:
   postgres:
-    image: postgres:15
+    image: postgres:17
     container_name: tournament-planner-db
     restart: always
     environment:
