@@ -1,33 +1,30 @@
 package com.marcel.tournament.backend.service.impl;
 
-import com.marcel.tournament.backend.bo.Team;
-import com.marcel.tournament.backend.bo.Tournament;
+import com.marcel.tournament.backend.dto.TournamentDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TournamentServiceTest {
 
     TournamentService uut;
 
-
     @BeforeEach
     void setUp() {
         uut = new TournamentService();
-        Tournament tournament = new Tournament();
+        TournamentDTO tournament = new TournamentDTO();
         tournament.setId(1);
         tournament.setName("Tournament");
-        tournament.setWinner(new Team());
 
         uut.createTournament(tournament);
     }
 
     @Test
     void createTournament() {
-        Tournament tournament = new Tournament();
-        tournament.setName("Tournament Create Test");
-        Tournament actual = uut.createTournament(tournament);
+        TournamentDTO tournamentDto = new TournamentDTO();
+        tournamentDto.setName("Tournament Create Test");
+        TournamentDTO actual = uut.createTournament(tournamentDto);
 
         assertEquals("Tournament Create Test", actual.getName());
         assertEquals(2, uut.getAllTournaments().size());

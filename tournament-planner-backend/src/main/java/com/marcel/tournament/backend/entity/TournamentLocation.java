@@ -1,4 +1,4 @@
-package com.marcel.tournament.backend.bo;
+package com.marcel.tournament.backend.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TournamentLocation {
-    private String city;
-    private String venue;
+    private Integer tournamentId;
+    private Integer locationId;
 }

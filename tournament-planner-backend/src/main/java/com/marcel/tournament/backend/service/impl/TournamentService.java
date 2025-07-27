@@ -1,6 +1,6 @@
 package com.marcel.tournament.backend.service.impl;
 
-import com.marcel.tournament.backend.bo.Tournament;
+import com.marcel.tournament.backend.dto.TournamentDTO;
 import com.marcel.tournament.backend.service.ITournamentService;
 import org.springframework.stereotype.Service;
 
@@ -13,21 +13,21 @@ import java.util.stream.Collectors;
 @Service
 public class TournamentService implements ITournamentService {
 
-    private final List<Tournament> tournaments = new ArrayList<>();
+    private final List<TournamentDTO> tournaments = new ArrayList<>();
 
     @Override
-    public Tournament createTournament(Tournament tournament) {
+    public TournamentDTO createTournament(TournamentDTO tournament) {
         tournaments.add(tournament);
         return tournament;
     }
 
     @Override
-    public List<Tournament> getTournamentByName(String tournamentName) {
+    public List<TournamentDTO> getTournamentByName(String tournamentName) {
         return tournaments.stream().filter(getTournamentByNamePredicate(tournamentName)).collect(Collectors.toList());
     }
 
     @Override
-    public void updateTournament(Tournament tournament) {
+    public void updateTournament(TournamentDTO tournament) {
         tournaments.stream().filter(getTournamentByIdPredicate(tournament)).findFirst().ifPresent(
                 getTournamentUpdateConsumer(tournament));
     }
@@ -38,25 +38,23 @@ public class TournamentService implements ITournamentService {
     }
 
     @Override
-    public List<Tournament> getAllTournaments() {
+    public List<TournamentDTO> getAllTournaments() {
         return tournaments;
     }
 
-    private static Consumer<Tournament> getTournamentUpdateConsumer(Tournament tournament) {
+    private static Consumer<TournamentDTO> getTournamentUpdateConsumer(TournamentDTO tournament) {
         return t -> { // todo only update if field is not null/empty
             t.setName(tournament.getName());
             t.setStartDate(tournament.getStartDate());
             t.setEndDate(tournament.getEndDate());
-            t.setWinner(tournament.getWinner());
-            t.setLocation(tournament.getLocation());
         };
     }
 
-    private static Predicate<Tournament> getTournamentByIdPredicate(Tournament tournament) {
+    private static Predicate<TournamentDTO> getTournamentByIdPredicate(TournamentDTO tournament) {
         return t -> t.getId().equals(tournament.getId());
     }
 
-    private static Predicate<Tournament> getTournamentByNamePredicate(String tournamentName) {
+    private static Predicate<TournamentDTO> getTournamentByNamePredicate(String tournamentName) {
         return tournament -> tournament.getName().equals(tournamentName);
     }
 }

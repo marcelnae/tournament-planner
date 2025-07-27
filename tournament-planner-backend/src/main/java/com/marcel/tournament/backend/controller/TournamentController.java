@@ -1,6 +1,6 @@
 package com.marcel.tournament.backend.controller;
 
-import com.marcel.tournament.backend.bo.Tournament;
+import com.marcel.tournament.backend.dto.TournamentDTO;
 import com.marcel.tournament.backend.service.ITournamentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +15,22 @@ public class TournamentController {
     private final ITournamentService tournamentService;
 
     @GetMapping("/")
-    public List<Tournament> getAllTournaments() {
+    public List<TournamentDTO> getAllTournaments() {
         return tournamentService.getAllTournaments();
     }
 
     @GetMapping("/{name}")
-    public List<Tournament> getTournament(@PathVariable String name) {
+    public List<TournamentDTO> getTournament(@PathVariable String name) {
         return tournamentService.getTournamentByName(name);
     }
 
     @PostMapping("/")
-    public Tournament postTournament(@RequestBody Tournament tournament) {
+    public TournamentDTO postTournament(@RequestBody TournamentDTO tournament) {
         return tournamentService.createTournament(tournament);
     }
 
     @PutMapping("/")
-    public void putTournament(@RequestBody Tournament tournament) {
+    public void putTournament(@RequestBody TournamentDTO tournament) {
         tournamentService.updateTournament(tournament);
     }
 
