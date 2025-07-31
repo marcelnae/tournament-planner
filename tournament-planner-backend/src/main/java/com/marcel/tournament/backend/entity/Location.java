@@ -1,5 +1,6 @@
 package com.marcel.tournament.backend.entity;
 
+import com.marcel.tournament.backend.dto.LocationDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
