@@ -13,4 +13,13 @@ public class Location {
     private String city;
     private String venue;
 
+    public LocationDTO toDto() {
+        LocationDTO locationDTO = new LocationDTO();
+        locationDTO.setId(this.id);
+        locationDTO.setCity(this.city);
+        locationDTO.setVenue(this.venue);
+
+        return locationDTO;
+    }
+
 }
