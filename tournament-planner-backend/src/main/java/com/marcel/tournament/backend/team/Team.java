@@ -1,15 +1,13 @@
-package com.marcel.tournament.backend.entity;
+package com.marcel.tournament.backend.team;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 public class Team {
     @Id
     private Integer id;

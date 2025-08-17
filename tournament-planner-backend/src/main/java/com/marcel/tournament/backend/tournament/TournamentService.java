@@ -1,7 +1,5 @@
-package com.marcel.tournament.backend.service.impl;
+package com.marcel.tournament.backend.tournament;
 
-import com.marcel.tournament.backend.dto.TournamentDTO;
-import com.marcel.tournament.backend.service.ITournamentService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +8,9 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Service implementation for tournament operations.
+ */
 @Service
 public class TournamentService implements ITournamentService {
 

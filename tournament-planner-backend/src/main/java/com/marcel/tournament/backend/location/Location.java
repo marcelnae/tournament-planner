@@ -1,11 +1,8 @@
-package com.marcel.tournament.backend.entity;
+package com.marcel.tournament.backend.location;
 
-import com.marcel.tournament.backend.dto.LocationDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
-@Entity
 @Data
 public class Location {
     @Id

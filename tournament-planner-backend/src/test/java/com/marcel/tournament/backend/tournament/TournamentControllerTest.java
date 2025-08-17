@@ -1,8 +1,6 @@
-package com.marcel.tournament.backend.controller;
+package com.marcel.tournament.backend.tournament;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TournamentControllerTest {
 
