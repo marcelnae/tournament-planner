@@ -1,6 +1,5 @@
-package com.marcel.tournament.backend.service.impl;
+package com.marcel.tournament.backend.tournament;
 
-import com.marcel.tournament.backend.dto.TournamentDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

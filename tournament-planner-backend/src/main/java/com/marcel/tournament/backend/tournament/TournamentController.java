@@ -1,12 +1,13 @@
-package com.marcel.tournament.backend.controller;
+package com.marcel.tournament.backend.tournament;
 
-import com.marcel.tournament.backend.dto.TournamentDTO;
-import com.marcel.tournament.backend.service.ITournamentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Rest Controller for managing tournaments.
+ */
 @RestController
 @RequestMapping("/tournaments")
 @RequiredArgsConstructor

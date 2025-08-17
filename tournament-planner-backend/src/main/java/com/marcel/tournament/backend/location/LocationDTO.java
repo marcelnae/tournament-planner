@@ -1,4 +1,4 @@
-package com.marcel.tournament.backend.dto;
+package com.marcel.tournament.backend.location;
 
 import lombok.Data;
 
