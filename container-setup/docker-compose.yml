@@ -1,7 +1,7 @@
 services:
   postgres:
     image: postgres:17
-    container_name: tournament-planner-db
+    container_name: db
     restart: always
     environment:
       POSTGRES_USER: root
@@ -13,5 +13,6 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
+name: tournament-planner
 volumes:
   postgres_data:
