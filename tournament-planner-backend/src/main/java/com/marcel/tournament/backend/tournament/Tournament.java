@@ -1,9 +1,12 @@
 package com.marcel.tournament.backend.tournament;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.time.ZonedDateTime;
 
@@ -14,11 +17,23 @@ import java.time.ZonedDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Tournament {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private ZonedDateTime startDate;
     private ZonedDateTime endDate; // Optional
+
+    public TournamentDTO toDto() {
+        TournamentDTO dto = new TournamentDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setStartDate(startDate);
+        dto.setEndDate(endDate);
+        return dto;
+    }
 }

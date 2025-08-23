@@ -15,13 +15,8 @@ public class TournamentController {
 
     private final ITournamentService tournamentService;
 
-    @GetMapping("/")
-    public List<TournamentDTO> getAllTournaments() {
-        return tournamentService.getAllTournaments();
-    }
-
     @GetMapping("/{name}")
-    public List<TournamentDTO> getTournament(@PathVariable String name) {
+    public List<TournamentDTO> getTournament(@PathVariable(required = false, name = "name") String name) {
         return tournamentService.getTournamentByName(name);
     }
 
@@ -32,12 +27,12 @@ public class TournamentController {
 
     @PutMapping("/")
     public void putTournament(@RequestBody TournamentDTO tournament) {
-        tournamentService.updateTournament(tournament);
+        tournamentService.updateTournament(tournament.getId(), tournament.getName());
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean deleteTournament(@PathVariable Integer id) {
-        return tournamentService.deleteTournamentById(id);
+    public void deleteTournament(@PathVariable Long id) {
+        tournamentService.deleteTournamentById(id);
     }
 
 }
