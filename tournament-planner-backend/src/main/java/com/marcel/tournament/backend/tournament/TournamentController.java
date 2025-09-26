@@ -31,7 +31,7 @@ public class TournamentController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void deleteTournament(@PathVariable Long id) {
+    public void deleteTournament(@PathVariable("id") Long id) { // specify name explicitly
         tournamentService.deleteTournamentById(id);
     }
 

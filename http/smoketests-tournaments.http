@@ -1,8 +1,29 @@
 ### Get a list of all tournaments
 GET {{url}}:{{port}}/api/tournaments/
 
+> {%
+    client.test("Status code is 200", function () {
+        client.assert(response.status === 200);
+    });
+    client.test("Response is array", function () {
+        client.assert(Array.isArray(response.body));
+    });
+%}
+
 ### Get all tournaments with a specific name
 GET {{url}}:{{port}}/api/tournaments/Elfmeterturnier
+
+> {%
+    client.test("Status code is 200", function () {
+        client.assert(response.status === 200);
+    });
+    client.test("Response is array", function () {
+        client.assert(Array.isArray(response.body));
+    });
+    client.test("All tournaments have correct name", function () {
+        response.body.forEach(t => client.assert(t.name.includes("Elfmeterturnier")));
+    });
+%}
 
 ### Create a new tournament
 POST {{url}}:{{port}}/api/tournaments/
@@ -24,13 +45,21 @@ Content-Type: application/json
 
 > {%
     client.test("Status code is 200", function () {
-        console.log(response)
         client.assert(response.status === 200);
     });
 
     client.test("Check tournament name", function () {
-        const body = response.body;
-        client.assert(body.name === "Champions Cup");
+        client.assert(response.body.name === "EURO 2024");
+    });
+
+    client.test("Check location", function () {
+        client.assert(response.body.location.city === "Berlin");
+        client.assert(response.body.location.venue === "Olympiastadion");
+    });
+
+    client.test("Check winner", function () {
+        client.assert(response.body.winner.name === "Team A");
+        client.assert(response.body.winner.coach === "Coach X");
     });
 %}
 
@@ -53,5 +82,17 @@ Content-Type: application/json
   }
 }
 
+> {%
+    client.test("Status code is 200", function () {
+        client.assert(response.status === 200);
+    });
+%}
+
 ### Delete existing tournament
 DELETE {{url}}:{{port}}/api/tournaments/delete/1
+
+> {%
+    client.test("Status code is 200", function () {
+        client.assert(response.status === 200);
+    });
+%}
