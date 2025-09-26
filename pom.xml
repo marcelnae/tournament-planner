@@ -18,7 +18,7 @@
         <java.version>21</java.version>
         <spring-boot.version>3.5.5</spring-boot.version>
         <micrometer-registry-prometheus.version>1.15.3</micrometer-registry-prometheus.version>
-        <lombok.version>1.18.40</lombok.version>
+        <lombok.version>1.18.42</lombok.version>
         <junit-jupiter.version>5.13.4</junit-jupiter.version>
         <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
         <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
