@@ -23,21 +23,15 @@ public interface ITournamentService {
 
     /**
      * Update a specific tournament.
-     * @param tournament the dto of the tournament to update.
+     * @param id Identifier of tournament
+     * @param name the new name of the tournament
      */
-    void updateTournament(TournamentDTO tournament);
+    void updateTournament(long id, String name);
 
     /**
      * Delete a tournament by id.
      * @param id the id of the tournament to be deleted.
-     * @return true, if specified tournament was deleted, false otherwise.
      */
-    boolean deleteTournamentById(Integer id);
-
-    /**
-     * Fetch all available tournaments.
-     * @return list of all tournaments.
-     */
-    List<TournamentDTO> getAllTournaments();
+    void deleteTournamentById(Long id);
 
 }

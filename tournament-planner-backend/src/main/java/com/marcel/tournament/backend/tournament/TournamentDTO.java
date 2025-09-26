@@ -9,9 +9,18 @@ import java.time.ZonedDateTime;
  */
 @Data
 public class TournamentDTO {
-    private Integer id;
+    private Long id;
     private String name;
     private ZonedDateTime startDate;
     private ZonedDateTime endDate; // Optional
+
+    public Tournament toEntity() {
+        Tournament tournament = new Tournament();
+        tournament.setId(id);
+        tournament.setName(name);
+        tournament.setStartDate(startDate);
+        tournament.setEndDate(endDate);
+        return tournament;
+    }
 
 }
