@@ -29,7 +29,7 @@ public class TournamentService implements ITournamentService {
 
     @Override
     public void updateTournament(long id, String name) {
-        int result = tournamentRepository.updateNameById(id, name);
+        tournamentRepository.updateNameById(id, name);
     }
 
     @Override
