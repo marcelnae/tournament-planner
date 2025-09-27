@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 
 /**
  * Rest Controller for managing tournaments.
@@ -67,6 +70,17 @@ public class TournamentController {
         @Parameter(description = "ID of the tournament to delete", required = true)
         @PathVariable("id") Long id) {
         tournamentService.deleteTournamentById(id);
+    }
+
+    @GetMapping("/health")
+    public String health() {
+        return "TournamentController is up";
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<String> handleException(Exception ex) {
+        ex.printStackTrace(); // Log to console for debugging
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + ex.getMessage());
     }
 
 }
