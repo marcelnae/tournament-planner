@@ -2,16 +2,13 @@ package com.marcel.tournament.backend.tournament;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
 
 /**
  * Rest Controller for managing tournaments.
@@ -71,16 +68,4 @@ public class TournamentController {
         @PathVariable("id") Long id) {
         tournamentService.deleteTournamentById(id);
     }
-
-    @GetMapping("/health")
-    public String health() {
-        return "TournamentController is up";
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception ex) {
-        ex.printStackTrace(); // Log to console for debugging
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: " + ex.getMessage());
-    }
-
 }
