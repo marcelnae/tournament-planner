@@ -16,7 +16,6 @@ public class TournamentDTO {
 
     public Tournament toEntity() {
         Tournament tournament = new Tournament();
-        tournament.setId(id);
         tournament.setName(name);
         tournament.setStartDate(startDate);
         tournament.setEndDate(endDate);
