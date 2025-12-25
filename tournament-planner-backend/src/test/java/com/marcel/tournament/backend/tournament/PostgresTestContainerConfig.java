@@ -3,7 +3,6 @@ package com.marcel.tournament.backend.tournament;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.utility.MountableFile;
 
 public abstract class PostgresTestContainerConfig {
 
@@ -15,11 +14,6 @@ public abstract class PostgresTestContainerConfig {
                 .withDatabaseName("testdb")
                 .withUsername("testuser")
                 .withPassword("testpass");
-        // Mount and run init.sql at container startup
-        POSTGRES_CONTAINER.withCopyFileToContainer(
-                MountableFile.forHostPath("container-setup/init.sql"),
-                "/docker-entrypoint-initdb.d/init.sql"
-        );
         POSTGRES_CONTAINER.start();
     }
 
