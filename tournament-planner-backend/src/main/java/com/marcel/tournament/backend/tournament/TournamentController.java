@@ -39,7 +39,7 @@ public class TournamentController {
         @Parameter(description = "Name of the tournament to search for", required = true)
         @PathVariable(required = false, name = "name") String name) {
         List<TournamentDTO> tournaments = tournamentService.getTournamentByName(name);
-        if (tournaments == null || tournaments.isEmpty()) {
+        if (tournaments.isEmpty()) {
             throw new TournamentException("Tournaments not found for name: " + name, org.springframework.http.HttpStatus.NOT_FOUND);
         }
         return tournaments;
