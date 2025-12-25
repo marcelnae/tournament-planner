@@ -15,7 +15,7 @@
     </modules>
 
     <properties>
-        <java.version>21</java.version>
+        <java.version>24</java.version>
         <spring-boot.version>3.5.6</spring-boot.version>
         <micrometer-registry-prometheus.version>1.16.0</micrometer-registry-prometheus.version>
         <lombok.version>1.18.42</lombok.version>
@@ -25,9 +25,11 @@
         <spring-restdocs-asciidoctor.version>3.0.5</spring-restdocs-asciidoctor.version>
         <postgresql.version>42.7.8</postgresql.version>
         <springdoc-openapi-starter-webmvc-ui.version>2.8.13</springdoc-openapi-starter-webmvc-ui.version>
+        <testcontainers.version>1.19.7</testcontainers.version>
     </properties>
 
     <dependencyManagement>
+        <!-- Spring Dependencies -->
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -44,6 +46,8 @@
                 <artifactId>spring-boot-starter-actuator</artifactId>
                 <version>${spring-boot.version}</version>
             </dependency>
+
+            <!-- Third Party Dependencies -->
             <dependency>
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
@@ -64,10 +68,24 @@
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
             </dependency>
+
+            <!-- Test Dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit-jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${testcontainers.version}</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -87,6 +105,8 @@
                                 <artifactId>lombok</artifactId>
                             </path>
                         </annotationProcessorPaths>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -154,6 +174,10 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

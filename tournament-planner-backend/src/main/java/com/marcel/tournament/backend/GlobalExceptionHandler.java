@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(TournamentException.class)
     public ResponseEntity<Object> handleTournamentException(TournamentException ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", ZonedDateTime.now());
+        body.put("timestamp", ZonedDateTime.now().toString());
         body.put("error", "TournamentException");
         body.put("message", ex.getMessage());
         return new ResponseEntity<>(body, ex.getStatus());
@@ -45,9 +45,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object> handleValidationException(MethodArgumentNotValidException ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", ZonedDateTime.now());
+        body.put("timestamp", ZonedDateTime.now().toString());
         body.put("error", "ValidationException");
-        body.put("message", ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        body.put("message", ex.getBindingResult().getAllErrors().getFirst().getDefaultMessage());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
@@ -60,7 +60,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({MissingServletRequestParameterException.class, MissingPathVariableException.class})
     public ResponseEntity<Object> handleMissingParams(Exception ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", ZonedDateTime.now());
+        body.put("timestamp", ZonedDateTime.now().toString());
         body.put("error", "MissingParameterException");
         body.put("message", ex.getMessage());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
@@ -75,7 +75,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Object> handleTypeMismatch(MethodArgumentTypeMismatchException ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", ZonedDateTime.now());
+        body.put("timestamp", ZonedDateTime.now().toString());
         body.put("error", "TypeMismatchException");
         body.put("message", ex.getMessage());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
@@ -90,7 +90,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleException(Exception ex) {
         Map<String, Object> body = new HashMap<>();
-        body.put("timestamp", ZonedDateTime.now());
+        body.put("timestamp", ZonedDateTime.now().toString());
         body.put("error", ex.getClass().getSimpleName());
         body.put("message", ex.getMessage());
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);

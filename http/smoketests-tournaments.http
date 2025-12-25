@@ -11,7 +11,7 @@ GET {{url}}:{{port}}/api/tournaments/
 %}
 
 ### Get all tournaments with a specific name
-GET {{url}}:{{port}}/api/tournaments/Elfmeterturnier
+GET {{url}}:{{port}}/api/tournaments?name=Elfmeterturnier
 
 > {%
     client.test("Status code is 200", function () {

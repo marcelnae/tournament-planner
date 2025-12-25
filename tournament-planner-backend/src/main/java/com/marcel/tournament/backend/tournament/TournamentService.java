@@ -2,6 +2,7 @@ package com.marcel.tournament.backend.tournament;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -47,6 +48,7 @@ public class TournamentService implements ITournamentService {
      * @throws TournamentException if tournament is not found
      */
     @Override
+    @Transactional
     public void updateTournament(long id, String name) {
         int updated = tournamentRepository.updateNameById(id, name);
         if (updated == 0) {
