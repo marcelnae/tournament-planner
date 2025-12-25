@@ -35,14 +35,27 @@ public class TournamentController {
         @ApiResponse(responseCode = "404", description = "Tournaments not found")
     })
     @GetMapping("/{name}")
-    public List<TournamentDTO> getTournament(
-        @Parameter(description = "Name of the tournament to search for", required = true)
-        @PathVariable(required = false, name = "name") String name) {
+    public List<TournamentDTO> getTournamentsByName(
+            @PathVariable("name") @Parameter(description = "Name of the tournament to search for", required = true) String name) {
         List<TournamentDTO> tournaments = tournamentService.getTournamentByName(name);
         if (tournaments.isEmpty()) {
             throw new TournamentException("Tournaments not found for name: " + name, org.springframework.http.HttpStatus.NOT_FOUND);
         }
         return tournaments;
+    }
+
+    /**
+     * Returns a list of all tournaments.
+     *
+     * @return list of all TournamentDTO
+     */
+    @Operation(summary = "Get all tournaments", description = "Returns a list of all tournaments")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Successful retrieval")
+    })
+    @GetMapping("/")
+    public List<TournamentDTO> getAllTournaments() {
+        return tournamentService.getTournamentByName("");
     }
 
     /**
