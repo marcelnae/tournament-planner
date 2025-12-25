@@ -47,7 +47,7 @@ public class GlobalExceptionHandler {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", ZonedDateTime.now());
         body.put("error", "ValidationException");
-        body.put("message", ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        body.put("message", ex.getBindingResult().getAllErrors().getFirst().getDefaultMessage());
         return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 
