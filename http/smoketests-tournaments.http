@@ -11,7 +11,7 @@ GET {{url}}:{{port}}/api/tournaments/
 %}
 
 ### Get all tournaments with a specific name
-GET {{url}}:{{port}}/api/tournaments?name=Elfmeterturnier
+GET {{url}}:{{port}}/api/tournaments/Elfmeterturnier
 
 > {%
     client.test("Status code is 200", function () {
@@ -31,16 +31,8 @@ Content-Type: application/json
 
 {
   "name": "EURO 2024",
-  "startDate": "2025-07-01T10:00:00Z",
-  "endDate": "2025-07-10T18:00:00Z",
-  "location": {
-    "city": "Berlin",
-    "venue": "Olympiastadion"
-  },
-  "winner": {
-    "name": "Team A",
-    "coach": "Coach X"
-  }
+  "startDate": "2025-07-01T10:00:00+00:00",
+  "endDate": "2025-07-10T18:00:00+00:00"
 }
 
 > {%
@@ -52,14 +44,8 @@ Content-Type: application/json
         client.assert(response.body.name === "EURO 2024");
     });
 
-    client.test("Check location", function () {
-        client.assert(response.body.location.city === "Berlin");
-        client.assert(response.body.location.venue === "Olympiastadion");
-    });
-
-    client.test("Check winner", function () {
-        client.assert(response.body.winner.name === "Team A");
-        client.assert(response.body.winner.coach === "Coach X");
+    client.test("Check tournament has id", function () {
+        client.assert(response.body.id !== null);
     });
 %}
 
@@ -68,18 +54,8 @@ PUT {{url}}:{{port}}/api/tournaments/
 Content-Type: application/json
 
 {
-  "id": 1,
-  "name": "Champions Cup - Final",
-  "startDate": "2025-07-01T10:00:00Z",
-  "endDate": "2025-07-12T20:00:00Z",
-  "location": {
-    "city": "Berlin",
-    "venue": "Olympiastadion"
-  },
-  "winner": {
-    "name": "Team B",
-    "coach": "Coach Y"
-  }
+  "id": 3,
+  "name": "Champions Cup - Final"
 }
 
 > {%
