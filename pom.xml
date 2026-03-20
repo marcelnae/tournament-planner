@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>24</java.version>
-        <spring-boot.version>3.5.10</spring-boot.version>
+        <spring-boot.version>3.5.12</spring-boot.version>
         <micrometer-registry-prometheus.version>1.16.2</micrometer-registry-prometheus.version>
         <lombok.version>1.18.42</lombok.version>
         <junit-jupiter.version>6.0.2</junit-jupiter.version>
