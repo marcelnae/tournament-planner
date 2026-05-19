@@ -1,4 +1,4 @@
-FROM maven:3.9.12-eclipse-temurin-21
+FROM maven:3.9.16-eclipse-temurin-21
 
 # Install SSH and other tools
 RUN ls -la /root && \
